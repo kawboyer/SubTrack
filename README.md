@@ -1,5 +1,4 @@
-```# SubTracked
- <h3>SubTrack tracks all of your monthly subscriptions and expenses.</h3>
+# SubTracked - track all of your monthly subscriptions
  
  **Contributors:**<br>
  Erik Augenzuker [GitHub Repo](https://github.com/Eaug2)<br>
@@ -16,8 +15,4 @@ SubTrack satisfies the need for people to keep track of their monthly expenses. 
 
 The flexibility of this application lets you keep track of common subscription services, as well as your own individual expenses to better see how you spend your money.  The eventual hope is that this app also lets you compare subscription services, look out for promotions and discounts and avoid having duplicate services that offer the same product.  There is also the capability of each user being able to make notes on their subscription experiences and to create custom alerts for subscription payment or cancellation deadlines.  
 
-Each user creates their own account where they can easily add all the subscription data relevant to them.  Numerous  provided subscription services (Amazon Video, Dropbox, Netflix, etc.)  will be able to be selected from a menu, or if the service is not list, it can be added as a custom bill.  The user selects the category of service, recurring billing period and cost, and this information is stored in a database and rendered in numerous ways for a user to break down their expenses.``` 
-
-Message Input
-
-Message @Taddes
+Each user creates their own account where they can easily add all the subscription data relevant to them.  Numerous  provided subscription services (Amazon Video, Dropbox, Netflix, etc.)  will be able to be selected from a menu, or if the service is not list, it can be added as a custom bill.  The user selects the category of service, recurring billing period and cost, and this information is stored in a database and rendered in numerous ways for a user to break down their expenses.
