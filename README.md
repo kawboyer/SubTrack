@@ -1,5 +1,4 @@
 # SubTracked
-## Track all of your monthly subscriptions
  
  **Contributors:**<br>
  Erik Augenzuker [GitHub Repo](https://github.com/Eaug2)<br>
