@@ -2,7 +2,8 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-var UserSchema =  new Schema ({
+
+var SubSchema =  new Schema ({
 
     name:{
         type: String,
@@ -16,12 +17,24 @@ var UserSchema =  new Schema ({
     duration:{
         type: String,
         default: "monthly"
+    }
+    
+});
+
+var UserSchema = new Schema({
+
+    name: {
+        type: String,
+        required: true
     },
-    FbId:{
+    subscriptions: {
+        type:[SubSchema]
+    },
+    FbId: {
         type: String,
         required: true
     }
-    
+
 });
 
 var User = mongoose.model("User", UserSchema);
