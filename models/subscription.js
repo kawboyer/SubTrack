@@ -3,19 +3,32 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var SubSchema =  new Schema ({
-
-    name:{
+    startdate:{
+        type: Date,
+        default: Date.now
+    },
+    nickname:{
         type: String,
         required: true
     },
-    cost:{
+    price:{
         type: Number,
         required: true,
         default: 0 
     },
-    duration:{
+    frequency:{
         type: String,
         default: "monthly"
+    },
+    reminder:{
+        type: Date
+    },
+    text:{
+        type:String
+    },
+    _userId:{
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
     
 });

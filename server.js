@@ -8,7 +8,7 @@ var logger = require("morgan");
 
 // Require all models!!
 //commented out until we actually have models
-// var db = require("./models");
+var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
 
@@ -16,7 +16,7 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 //Dont think we need this right now but its here for later!
-// app.use(logger("dev"));
+app.use(logger("dev"));
 
 //use body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,8 +28,8 @@ app.use(express.static("public"));
 // require("./controller/subscription-routes.js")(app);
 // require("./controller/html-routes.js")(app);
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+// If deployed, use the deployed database. Otherwise use the local subtracked database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/subtracked";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
@@ -41,6 +41,8 @@ mongoose.connect(MONGODB_URI);
 //     res.sendFile(path.join(__dirname, "/public/index.html"));
 // });
 
+
+  
 app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
 });
