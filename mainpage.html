@@ -10,26 +10,33 @@
 </head>
 <body>
   <div class="card"></div>
-<div id="chat" class="container">
+<div id="subscription" class="container">
   <h1 class="card-header">SubTracked</h1>
   <!-- Messages -->
   <div v-for="message in messages" class="card">
     <div class="card-body">
-      <!-- nickname -->
+      <!-- Subscription -->
       <h6 class="card-subtitle mb-2 text-muted">{{ message.nickname }}</h6>
-      <!-- content -->
-      <p v-if="message !== editingMessage" class="card-text">{{ message.text }}</p>
-      <p v-if="message !== editingMessage" class="card-text">{{ message.text }}</p>
-      <p v-if="message !== editingMessage" class="card-text">{{ message.text }}</p>
+      <!-- SUBSCRIPTION CONTENT -->
+      <!-- price -->
+      <p v-if="message !== editingMessage" class="card-text">Price: {{ message.price }}</p>
+      <!-- frequency -->
+      <p v-if="message !== editingMessage" class="card-text">Frequency: {{ message.frequency }}</p>
+      <!-- date -->
+      <p v-if="message !== editingMessage" class="card-text">Start Date: {{ message.date }}</p>
+      <!-- reminder -->
+      <p v-if="message !== editingMessage" class="card-text">Reminder: {{ message.reminder }}</p>
+      <!-- notes -->
+      <p v-if="message !== editingMessage" class="card-text">Message: {{ message.text }}</p>
       <textarea v-else v-model="messageText" class="form-control"></textarea>
       <!-- actions -->
       <div v-if="message !== editingMessage">
-        <a @click.prevent="deleteMessage(message)" href="#" class="card-link">delete</a>
-        <a @click.prevent="editMessage(message)" href="#" class="card-link">edit</a>
+        <a @click.prevent="deleteMessage(message)" href="#" class="card-link">Delete</a>
+        <a @click.prevent="editMessage(message)" href="#" class="card-link">Edit</a>
       </div>
       <div v-else>
-        <a @click.prevent="cancelEditing" href="#" class="card-link">cancel</a>
-        <a @click.prevent="updateMessage" href="#" class="card-link">update</a>
+        <a @click.prevent="cancelEditing" href="#" class="card-link">Cancel</a>
+        <a @click.prevent="updateMessage" href="#" class="card-link">Update</a>
       </div>
     </div>
   </div>
@@ -39,13 +46,35 @@
   <!-- New Message -->
   <form v-if="!editingMessage" @submit.prevent="storeMessage">
     <div class="form-group">
+      <label>Subscription:</label>
+      <input v-model="nickname" class="form-control"/>
+    </div>
+    <!-- price -->
+    <div class="form-group">
+      <label>Price:</label>
+      <input v-model="subPrice" class="form-control"/>
+    </div>
+    <!-- frequency -->
+    <div class="form-group">
+      <label>Frequency:</label>
+      <input v-model="subFrequency" class="form-control"/>
+    </div>
+    <!-- date -->
+    <div class="form-group">
+      <label>Start Date:</label>
+      <input v-model="subStartDate" class="form-control"/>
+    </div>
+    <!-- reminder -->
+    <div class="form-group">
+      <label>Reminder:</label>
+      <input v-model="subReminder" class="form-control"/>
+    </div>
+    <!-- notes -->
+    <div class="form-group">
       <label>Message:</label>
       <textarea v-model="messageText" class="form-control"></textarea>
     </div>
-    <div class="form-group">
-      <label>Nickname:</label>
-      <input v-model="nickname" class="form-control"/>
-    </div>
+
     <button class="btn btn-primary">Send</button>
   </form>
 </div>
@@ -70,17 +99,26 @@
   const messagesRef = database.ref('messages')
 
   new Vue({
-    el: "#chat",
+    el: "#subscription",
     data: {
       messages: [],
       messageText: '',
       nickname: '',
+      subPrice: '',
+      subFrequency: '',
+      subStartDate: '',
+      subReminder: '',
       editingMessage: null
     },
     methods: {
       storeMessage () {
-        messagesRef.push({text: this.messageText, nickname: this.nickname})
+        messagesRef.push({text: this.messageText, nickname: this.nickname, price: this.subPrice, frequency: this.subFrequency, date: this.subStartDate, reminder: this.subReminder})
         this.messageText = ''
+        this.nickname = ''
+        this.subPrice = ''
+        this.subFrequency = ''
+        this.subStartDate = ''
+        this.subReminder = ''
       },
       deleteMessage (message) {
         messagesRef.child(message.id).remove()
@@ -88,13 +126,22 @@
       editMessage (message) {
         this.editingMessage = message
         this.messageText = message.text
+        this.subPrice = message.price
+        this.subFrequency = message.frequency
+        this.subStartDate = message.date
+        this.subReminder = message.reminder
       },
       cancelEditing () {
         this.editingMessage = null
         this.messageText = ''
+        this.subPrice = ''
+        this.subFrequency = ''
+        this.subStartDate = ''
+        this.subReminder = ''
       },
       updateMessage () {
-        messagesRef.child(this.editingMessage.id).update({text: this.messageText})
+        // Careful with this one!!!!!!
+        messagesRef.child(this.editingMessage.id).update({text: this.messageText, price: this.subPrice, frequency: this.subFrequency, date: this.subStartDate, reminder: this.subReminder})
         this.cancelEditing()
       }
     },
