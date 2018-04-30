@@ -41,7 +41,8 @@ mongoose.connect(MONGODB_URI);
 //     res.sendFile(path.join(__dirname, "/public/index.html"));
 // });
 
-
+const usercontroller= require("./controller/user-routes");
+usercontroller(app);
   
 app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
