@@ -25,7 +25,8 @@ var UserSchema = new Schema({
 
     FbId: {
         type: String,
-        required: false
+        required: true,
+        unique: true
     }
 
 });
