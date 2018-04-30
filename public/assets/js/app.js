@@ -94,7 +94,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 btnLogout.addEventListener("click", e => {
   firebase.auth().signOut();
-  console.log("OUT");
+
 })
 
 //Logic for everything with generating the page content
@@ -107,3 +107,94 @@ btnLogout.addEventListener("click", e => {
 
 //}
 
+var one = new Vue({
+  el: '#vue-app-one',
+  data: {
+    title: "Vue App One"
+  },
+  methods: {
+
+  },
+  computed: {
+    greet: function() {
+      return "Hello from app one"
+    }
+  }
+
+});
+
+
+var two = new Vue({
+  el: '#vue-app-two',
+  data: {
+    title: "Vue App Two",
+    title2: "Vue App Two Title 2"
+  },
+  methods: {
+    changeTitle: function() {
+      one.title = "I have changed title one!"
+    }
+
+  },
+  computed: {
+    greet: function() {
+      return "Hello from app two, not app one!"
+    }
+  }
+
+})
+
+// //Change title of either instance from outside
+
+// // two.title = "Changed from the outside!";
+
+// //Generation of components
+// //Component is a reusable part that we can use in any Vue instance we'd like
+
+// // Vue Component method takes two parameters: 1. The name(string) 2. an object
+// // We can pass various properties
+// // template is a rendering template of what shows up on dom
+// // data, which is always a function, returns what we want to render
+Vue.component('greeting', {
+  template: '<p>Hey there, I am a component that can be used over and over. This cat is named {{name}}. <button v-on:click="changeName">ChangeCatName</button></p>',
+  data: function() {
+    return {
+    name: "Pepper"
+    }
+  },
+  methods: {
+    changeName: function() {
+      this.name = "Pamina"
+    }
+  }
+});
+
+Vue.component('login', {
+  template: 
+  `<div>
+  <input id="txtEmail" type="email" placeholder="Email">
+
+    <input id="txtPassword" type="password" placeholder="Password">
+
+    <button id="btnLogin" class="btn btn-action">
+      Log in
+    </button>
+    </div>`
+});
+
+// // Can trick VUe to change internal components by assigning an external
+// // global variable as an object that matches the one we want to change
+// // and modifying it:
+// // var data = {
+// //   name: "Peanut"
+// // }
+
+// // Can then also pass through data into the component, just as we specified
+// // data object inside Vue instance
+new Vue({
+  el: '#vue-app-one'
+});
+
+new Vue({
+  el: '#vue-app-two'
+});
