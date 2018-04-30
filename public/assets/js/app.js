@@ -70,7 +70,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
     $.ajax({
       method: "POST",
-      url: "/User/",
+      url: "/User/new",
       data: {
         FbId: fbUser.uid
       }
@@ -80,6 +80,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         console.log(data);
         // Empty the notes section
       })
+
 
     // logIn(firebaseUser);
     btnLogout.classList.remove("hide");

@@ -6,13 +6,42 @@ module.exports = function (app) {
     //     res.sendFile(path.join(__dirname, "/public/index.html"));
     // });
 
-    app.post("/User/", function (req, res) {
-        db.User.create(req.body)
+    // app.get("/notes", function(req, res) {
+    //     // Find all Notes
+    //     db.Note.find({})
+    //       .then(function(dbNote) {
+    //         res.json(dbNote);
+    //       })
+    //       .catch(function(err) {
+    //         res.json(err);
+    //       });
+    //   });
+
+    app.post("/User/new", function (req, res) {
+        db.User.findOneAndUpdate({
+            where: {
+                FbId: req.body.FbId
+            }
+        })
             .then(function (dbUser) {
-              return db.User.findOneAndUpdate({ _id: req.params.id }, { subscription: dbSubscription._id }, { unique: true })
-            })
-            .catch(function (err) {
-                console.log(err.message);
-            });
+                if (!dbUser) {
+                    db.User.create(req.body)
+                        .then(function (dbUser) {
+                            // console.log(res.json(req.body.FbId))
+                            // return db.User.findOneAndUpdate({ _id: req.params.id }, { subscription: dbSubscription._id }, { unique: true })
+                            res.json(dbUser)
+                        })
+                        .catch(function (err) {
+                            console.log(err.message);
+                            res.json({message: "There was an error creating the user."})
+                        });
+                }
+                else {
+                    res.end();
+                }
+
     })
+
+
+})
 }
