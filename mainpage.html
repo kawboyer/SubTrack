@@ -20,15 +20,45 @@
       <!-- SUBSCRIPTION CONTENT -->
       <!-- price -->
       <p v-if="message !== editingMessage" class="card-text">Price: {{ message.price }}</p>
+      <div v-else >
+        <p>Price:</p>
+        <textarea v-model="subPrice" class="form-control"></textarea>
+      </div>
+      <!-- <textarea v-else v-model="subPrice" class="form-control"></textarea> -->
+
       <!-- frequency -->
       <p v-if="message !== editingMessage" class="card-text">Frequency: {{ message.frequency }}</p>
+      <div v-else >
+          <p>Frequency:</p>
+          <textarea v-model="subFrequency" class="form-control"></textarea>
+        </div>
+      <!-- <textarea v-else v-model="subFrequency" class="form-control"></textarea> -->
+
       <!-- date -->
       <p v-if="message !== editingMessage" class="card-text">Start Date: {{ message.date }}</p>
+      <div v-else >
+          <p>Start Date:</p>
+          <textarea v-model="subStartDate" class="form-control"></textarea>
+        </div>
+      <!-- <textarea v-else v-model="subStartDate" class="form-control"></textarea> -->
+
       <!-- reminder -->
       <p v-if="message !== editingMessage" class="card-text">Reminder: {{ message.reminder }}</p>
-      <!-- notes -->
+      <div v-else >
+          <p>Reminder:</p>
+          <textarea v-model="subReminder" class="form-control"></textarea>
+        </div>
+      <!-- <textarea v-else v-model="subReminder" class="form-control"></textarea> -->
+
+      <!-- Notes -->
       <p v-if="message !== editingMessage" class="card-text">Message: {{ message.text }}</p>
-      <textarea v-else v-model="messageText" class="form-control"></textarea>
+      <div v-else >
+          <p>Message:</p>
+          <textarea v-model="messageText" class="form-control"></textarea>
+        </div>
+      <!-- <textarea v-else v-model="messageText" class="form-control"></textarea> -->
+
+
       <!-- actions -->
       <div v-if="message !== editingMessage">
         <a @click.prevent="deleteMessage(message)" href="#" class="card-link">Delete</a>
@@ -170,6 +200,11 @@
       messagesRef.on('child_changed', snapshot => {
         const updatedMessage = this.messages.find(message => message.id === snapshot.key)
         updatedMessage.text = snapshot.val().text
+        updatedMessage.price = snapshot.val().price
+        updatedMessage.frequency = snapshot.val().frequency
+        updatedMessage.date = snapshot.val().date
+        updatedMessage.reminder = snapshot.val().reminder
+
         if (snapshot.val().nickname !== this.nickname) {
           nativeToast({
               message: `Message edited by ${snapshot.val().nickname}`,
