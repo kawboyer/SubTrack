@@ -1,3 +1,14 @@
+// TESTING TO GET VUE TO WORK
+var Vue = require("vue/dist/vue.js");
+
+Vue.component("Subscription", require("../src/components/Subscription.vue"));
+
+const app = new Vue({
+  el: "#app"
+});
+
+
+
 // Firebase User Authentication Protocol 
 
 // Initialize Firebase
