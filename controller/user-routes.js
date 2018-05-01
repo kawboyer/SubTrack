@@ -18,15 +18,12 @@ module.exports = function (app) {
     //   });
 
     app.post("/User/new", function (req, res) {
-        db.User.findOneAndUpdate({
-            where: {
-                FbId: req.body.FbId
-            }
-        })
+
+        db.User.findOne({"FbId": req.body.FbId})
             .then(function (dbUser) {
-                console.log(req.body.FbId)
-                if (!dbUser || dbUser != false) {
-                    console.log("IM")
+
+                if (!dbUser) {
+
                     db.User.create(req.body)
                         .then(function (dbUser) {
                             // console.log(res.json(req.body.FbId))
@@ -35,15 +32,12 @@ module.exports = function (app) {
                         })
                         .catch(function (err) {
                             console.log(err.message);
-                            res.json({message: "There was an error creating the user."})
+                            res.json({ message: "There was an error creating the user." })
                         });
                 }
                 else {
                     res.end();
                 }
-
+            })
     })
-
-
-})
 }
