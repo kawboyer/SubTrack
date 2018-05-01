@@ -143,21 +143,28 @@ btnLogout.addEventListener("click", e => {
 
 //}
 
+
+
+
 var one = new Vue({
   el: '#vue-app-one',
   data: {
-    title: "Vue App One"
+    title: "Header Test"
   },
   methods: {
 
   },
   computed: {
+
     greet: function () {
       return "Hello from app one"
+
     }
   }
 
 });
+
+
 
 
 var two = new Vue({
@@ -179,6 +186,9 @@ var two = new Vue({
   }
 
 })
+
+
+
 
 // //Change title of either instance from outside
 
@@ -205,17 +215,28 @@ Vue.component('greeting', {
   }
 });
 
+
 Vue.component('login', {
   template:
     `<div>
+
   <input id="txtEmail" type="email" placeholder="Email">
 
-    <input id="txtPassword" type="password" placeholder="Password">
+  <input id="txtPassword" type="password" placeholder="Password">
 
-    <button id="btnLogin" class="btn btn-action">
-      Log in
-    </button>
-    </div>`
+  <button id="btnLogin" class="btn btn-action">
+    Log in
+  </button>
+
+  <button id="btnSignup" class="btn btn-secondary">
+    Sign Up
+  </button>
+
+  <button id="btnLogout" class="btn btn-action hide">
+      Log out
+  </button>
+
+</div>`
 });
 
 // // Can trick VUe to change internal components by assigning an external
