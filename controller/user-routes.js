@@ -24,7 +24,9 @@ module.exports = function (app) {
             }
         })
             .then(function (dbUser) {
-                if (!dbUser) {
+                console.log(req.body.FbId)
+                if (!dbUser || dbUser != false) {
+                    console.log("IM")
                     db.User.create(req.body)
                         .then(function (dbUser) {
                             // console.log(res.json(req.body.FbId))
