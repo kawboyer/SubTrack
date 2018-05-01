@@ -10,6 +10,8 @@
 
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue"></script>
+<!-- Vuelidate CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vuelidate@0.6.2/lib/index.min.js"></script>
 
   <!-- Materialze Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -40,23 +42,46 @@
 
 <!-- Vue Instances example Computed properties don't need parentheses. Only Methods-->
   <div id="vue-app-one">
+
+ 
 <h2>{{ title }}</h2>
 <p>{{greet}}</p> 
  <greeting></greeting>
   </div>
 
   <div id="vue-app-two">
+    
      <h2>{{title2}}</h2>
     <p>{{greet}}</p>
     <button v-on:click="changeTitle">Change App One Title</button>
-    <login></login> 
-
+    <valid></valid>
   </div>
 
+
+
+ 
   <script src="./assets/js/app.js" type="text/javascript">
   
-  
-  
+//   import { required, minLength, between } from 'vuelidate/lib/validators'
+
+// export default {
+//   data () {
+//     return {
+//       name: '',
+//       age: 0
+//     }
+//   },
+//   validations: {
+//     name: {
+//       required,
+//       minLength: minLength(4)
+//     },
+//     age: {
+//       between: between(20, 30)
+//     }
+//   }
+// }
+import { required, minLength, between } from 'vuelidate/lib/validators'
   
   </script>
   
