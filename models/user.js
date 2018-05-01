@@ -25,8 +25,15 @@ var UserSchema = new Schema({
 
     FbId: {
         type: String,
-        required: false
-    }
+        required: true,
+        unique: true
+    },
+    subscriptions: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Subscription"
+        }
+      ]
 
 });
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,10 @@
   <!-- Firebase script -->
   <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue"></script>
 <!-- Vuelidate CDN -->
@@ -15,30 +20,52 @@
 
   <!-- Materialze Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue-materialize@1.0.0/build/index.min.js"></script>
 
   <!-- Materialize Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
 
-  <div class="container">
-    <input id="txtEmail" type="email" placeholder="Email">
+  <div id="app">
+    <side-navbar></side-navbar>
+  </div>
 
-    <input id="txtPassword" type="password" placeholder="Password">
+  <header>
 
-    <button id="btnLogin" class="btn btn-action">
-      Log in
-    </button>
 
-    <button id="btnSignup" class="btn btn-secondary">
-      Sign Up
-    </button>
+  </header>
 
-    <button id="btnLogout" class="btn btn-action hide">
+  <main >
+    <div class="container">
+      <input id="txtEmail" type="email" placeholder="Email">
+
+      <input id="txtPassword" type="password" placeholder="Password">
+
+      <button id="btnLogin" class="btn btn-action">
+        Log in
+      </button>
+
+      <button id="btnSignup" class="btn btn-secondary">
+        Sign Up
+      </button>
+
+      <button id="btnLogout" class="btn btn-action hide">
         Log out
-    </button>
+      </button>
+      <div>
+        <p id="fbuser">Shee</p>
+      </div>
+    </div>
+    <!-- close container-->
 
-  </div> <!-- close container-->
+    <side
+    </div>
+  </main>
+
 
 <!-- Vue Instances example Computed properties don't need parentheses. Only Methods-->
   <div id="vue-app-one">
@@ -59,8 +86,10 @@
 
 
 
+
  
   <script src="./assets/js/app.js" type="text/javascript">
+
   
 //   import { required, minLength, between } from 'vuelidate/lib/validators'
 
@@ -83,7 +112,9 @@
 // }
 import { required, minLength, between } from 'vuelidate/lib/validators'
   
+
   </script>
-  
+
 </body>
+
 </html>
