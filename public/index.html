@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Firebase Auth</title>
+  <!-- Firebase script -->
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
 
   <!-- jQuery -->
@@ -15,46 +18,61 @@
 
   <!-- Materialze Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue-materialize@1.0.0/build/index.min.js"></script>
 
-  <!-- Vue script -->
-  <script src="https://unpkg.com/vue"></script>
+  <!-- Materialize Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script> -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
 
-    <button id="btnSignup" class="btn btn-secondary">
-      Sign Up
-    </button>
+<body>
 
-    <button id="btnLogout" class="btn btn-action hide">
+  <div id="app">
+    <side-navbar></side-navbar>
+  </div>
+
+  <header>
+
+
+  </header>
+
+  <main >
+    <div class="container">
+      <input id="txtEmail" type="email" placeholder="Email">
+
+      <input id="txtPassword" type="password" placeholder="Password">
+
+      <button id="btnLogin" class="btn btn-action">
+        Log in
+      </button>
+
+      <button id="btnSignup" class="btn btn-secondary">
+        Sign Up
+      </button>
+
+      <button id="btnLogout" class="btn btn-action hide">
         Log out
-    </button>
-<div>
-<p id="fbuser">Shee</p>
-</div>
-  </div> <!-- close container-->
+      </button>
+      <div>
+        <p id="fbuser">Shee</p>
+      </div>
+    </div>
+    <!-- close container-->
 
-<!-- Vue Instances example Computed properties don't need parentheses. Only Methods-->
-  <div id="vue-app-one">
-<h2>{{ title }}</h2>
-<p>{{greet}}</p> 
- <greeting></greeting>
-  </div>
+    <side
+    </div>
+  </main>
 
-  <div id="vue-app-two">
-     <h2>{{title2}}</h2>
-    <p>{{greet}}</p>
-    <button v-on:click="changeTitle">Change App One Title</button>
-    <login></login> 
+  <footer>
 
-  </div>
+
+  </footer>
+
 
   <script src="./assets/js/app.js" type="text/javascript">
-  
-  
-  
-  
   </script>
-  
+
 </body>
+
 </html>

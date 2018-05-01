@@ -1,13 +1,26 @@
-// TESTING TO GET VUE TO WORK
-var Vue = require("vue/dist/vue.js");
 
-Vue.component("Subscription", require("../src/components/Subscription.vue"));
 
-const app = new Vue({
-  el: "#app"
+Vue.component('side-navbar', {
+  template: `
+  <ul id="slide-out" class="sidenav sidenav-fixed">
+  <li><a href="#!">First Sidebar Link</a></li>
+  <li><a href="#!">Second Sidebar Link</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  `,
 });
 
+// Vue.component('pie-chart', {
+//   var myPieChart = new Chart(ctx,{
+//     type: 'pie',
+//     data: data,
+//     options: options
+// });
 
+
+new Vue({
+  el: '#app'
+});
 
 // Firebase User Authentication Protocol 
 var firebaseUser = null;
