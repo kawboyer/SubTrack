@@ -80,7 +80,14 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         console.log(data);
         // Empty the notes section
       })
-
+      console.log("INBEEEEE")
+    $.ajax({
+      method: "GET",
+      url: "/subscriptions/" + fbUser.uid,
+    }).then(function (response) {
+      //Data we want to input onto page here
+      console.log(response);
+    })
 
     // logIn(firebaseUser);
     btnLogout.classList.remove("hide");
@@ -95,6 +102,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 btnLogout.addEventListener("click", e => {
   firebase.auth().signOut();
+  firebaseUser = null;
 
 })
 
@@ -103,8 +111,8 @@ btnLogout.addEventListener("click", e => {
 // function logIn() {
 //   var fbUser = firebaseUser;
 //   console.log(fbUser);
-  //Ajax call to post the fb user to mongodb
-  //Ajax call to get the fb users infomation from mongodb
+//Ajax call to post the fb user to mongodb
+//Ajax call to get the fb users infomation from mongodb
 
 //}
 
@@ -117,7 +125,7 @@ var one = new Vue({
 
   },
   computed: {
-    greet: function() {
+    greet: function () {
       return "Hello from app one"
     }
   }
@@ -132,13 +140,13 @@ var two = new Vue({
     title2: "Vue App Two Title 2"
   },
   methods: {
-    changeTitle: function() {
+    changeTitle: function () {
       one.title = "I have changed title one!"
     }
 
   },
   computed: {
-    greet: function() {
+    greet: function () {
       return "Hello from app two, not app one!"
     }
   }
@@ -158,21 +166,21 @@ var two = new Vue({
 // // data, which is always a function, returns what we want to render
 Vue.component('greeting', {
   template: '<p>Hey there, I am a component that can be used over and over. This cat is named {{name}}. <button v-on:click="changeName">ChangeCatName</button></p>',
-  data: function() {
+  data: function () {
     return {
-    name: "Pepper"
+      name: "Pepper"
     }
   },
   methods: {
-    changeName: function() {
+    changeName: function () {
       this.name = "Pamina"
     }
   }
 });
 
 Vue.component('login', {
-  template: 
-  `<div>
+  template:
+    `<div>
   <input id="txtEmail" type="email" placeholder="Email">
 
     <input id="txtPassword" type="password" placeholder="Password">

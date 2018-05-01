@@ -25,12 +25,7 @@ var SubSchema =  new Schema ({
     },
     text:{
         type:String
-    },
-    _userId:{
-        type: Schema.Types.ObjectId,
-        ref: "User"
     }
-    
 });
 
 var Subscription = mongoose.model("Subscription", SubSchema);

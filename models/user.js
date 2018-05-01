@@ -27,7 +27,13 @@ var UserSchema = new Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    subscriptions: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Subscription"
+        }
+      ]
 
 });
 
