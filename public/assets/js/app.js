@@ -1,3 +1,30 @@
+
+
+Vue.component('side-navbar', {
+  template: `
+  <ul id="slide-out" class="sidenav sidenav-fixed">
+    <li><a href="#!">Add Subscription</a></li>
+    <li><a href="#!">Calendar</a></li>
+    <li><a href="#!">About</a></li>
+    <li><a href="#!">Log Out</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <footer>&copy 2018</footer>
+  `,
+});
+
+// Vue.component('pie-chart', {
+//   var myPieChart = new Chart(ctx,{
+//     type: 'pie',
+//     data: data,
+//     options: options
+// });
+
+
+new Vue({
+  el: '#app'
+});
+
 // Firebase User Authentication Protocol 
 var firebaseUser = null;
 // Initialize Firebase
