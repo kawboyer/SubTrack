@@ -23,6 +23,7 @@ module.exports = function (app) {
             .then(function (dbUser) {
 
                 if (!dbUser) {
+
                     db.User.create(req.body)
                         .then(function (dbUser) {
                             // console.log(res.json(req.body.FbId))
