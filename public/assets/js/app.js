@@ -94,27 +94,28 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     //firebase user id 
     console.log(fbUser.uid);
     $("#fbuser").text(fbUser.uid);
-
-    $.ajax({
-      method: "POST",
-      url: "/User/new",
-      data: {
-        FbId: fbUser.uid
-      }
-    })
-      .then(function (data) {
-        // Log the response
-        console.log(data);
-        // Empty the notes section
-      })
-      console.log("INBEEEEE")
-    $.ajax({
-      method: "GET",
-      url: "/subscriptions/" + fbUser.uid,
-    }).then(function (response) {
-      //Data we want to input onto page here
-      console.log(response);
-    })
+    
+    // window.location.replace("http://www.google.com");
+    // $.ajax({
+    //   method: "POST",
+    //   url: "/User/new",
+    //   data: {
+    //     FbId: fbUser.uid
+    //   }
+    // })
+    //   .then(function (data) {
+    //     // Log the response
+    //     console.log(data);
+    //     // Empty the notes section
+    //   })
+    //   console.log("INBEEEEE")
+    // $.ajax({
+    //   method: "GET",
+    //   url: "/subscriptions/" + fbUser.uid,
+    // }).then(function (response) {
+    //   //Data we want to input onto page here
+    //   console.log(response);
+    // })
 
     // logIn(firebaseUser);
     btnLogout.classList.remove("hide");

@@ -42,9 +42,10 @@ mongoose.connect(MONGODB_URI);
 // });
 const usercontroller = require("./controller/user-routes");
 const subscriptioncontroller = require("./controller/subscriptions-routes");
-
+const githubcontroller = require("./controller/github");
 usercontroller(app);
 subscriptioncontroller(app);
+githubcontroller(app);
 
 app.listen(PORT, function () {
     console.log("Server listening on: http://localhost:" + PORT);

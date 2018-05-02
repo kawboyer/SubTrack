@@ -217,7 +217,8 @@
       created() {
         // value = snapshot.val() | key = snapshot.key
         messagesRef.on('child_added', snapshot => {
-          this.messages.push({ ...snapshot.val(),
+          this.messages.push({
+            ...snapshot.val(),
             id: snapshot.key
           })
           if (snapshot.val().nickname !== this.nickname) {
@@ -255,7 +256,7 @@
         })
       }
     })
-    
+
   </script>
 
   <script src="./assets/js/app.js" type="text/javascript"></script>

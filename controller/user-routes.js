@@ -16,7 +16,9 @@ module.exports = function (app) {
     //         res.json(err);
     //       });
     //   });
-
+    app.get("/api/User", function(req, res){
+        db.User.find(req.query)
+    })
     app.post("/User/new", function (req, res) {
 
         db.User.findOne({"FbId": req.body.FbId})
