@@ -2,13 +2,18 @@ var db = require("../models");
 
 module.exports = function (app) {
 
+    app.get("/subscriptions", function(req, res){
+        db.Subscription.find(req.query)
+        
+    })
+
     //Find the subs of specific ID
     app.get("/subscriptions/:id", function (req, res) {
-        console.log("In SUbs")
-        db.User.findOne({"FbId": req.params.id})
+        // console.log("In SUbs")
+        db.User.findOne({ "FbId": req.params.id })
             .populate("subscriptions")
             .then(function (user) {
-               res.json(user.subscriptions);
+                res.json(user.subscriptions);
             })
 
             .catch(function (err) {
@@ -17,12 +22,20 @@ module.exports = function (app) {
     });
 
     app.post("/subscriptions/:id", function (req, res) {
-        db.Subscription.create(req.body).then(function (dbSubscription) {
-            res.json(dbSubscription);
-        });
+        db.User.findOne({ "FbId": req.params.id })
+            .then(function (user) {
+                db.Subscription.create(
+                    { startdate: req.body.startdate },
+                    { nickname: req.body.nickname },
+                    { price: req.body.price },
+                    { frequency: req.body.frequency },
+                    { reminder: req.body.reminder },
+                    { text: req.body.text }, function (err, data) {
+                        if (err) return handleError(err);
+                    }
+                )
+            })
     })
-
-}
 // ========================
 
 
@@ -51,4 +64,4 @@ module.exports = function (app) {
 //             res.json(dbSubscription);
 //         });
 //     }
-// };
+ };
