@@ -10,7 +10,7 @@ var logger = require("morgan");
 //commented out until we actually have models
 var db = require("./models");
 
-var PORT = process.env.PORT || 3001;
+var PORT = process.env.PORT || 3000;
 
 //use express
 var app = express();
