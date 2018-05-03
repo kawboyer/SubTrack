@@ -31,7 +31,9 @@
 <body>
 
   <div id="app">
-    <side-navbar></side-navbar>
+    <navbar></navbar>
+    <sidebar></sidebar>
+    <pie-chart></pie-chart>
   </div>
 
   <div class="card"></div>
@@ -140,6 +142,12 @@
 
 
   <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, options);
+    });
+
     // Initialize Firebase
     var config = {
       apiKey: "AIzaSyCT-cxaeL9QVljaDNXrDY1KhEdSCYDZ_Po",
@@ -226,7 +234,7 @@
               type: 'success'
             })
           }
-        })
+        });
         messagesRef.on('child_removed', snapshot => {
           const deletedMessage = this.messages.find(message => message.id === snapshot.key)
           const index = this.messages.indexOf(deletedMessage)
@@ -237,7 +245,7 @@
               type: 'warning'
             })
           }
-        })
+        });
         messagesRef.on('child_changed', snapshot => {
           const updatedMessage = this.messages.find(message => message.id === snapshot.key)
           updatedMessage.text = snapshot.val().text
@@ -252,9 +260,9 @@
               type: 'info'
             })
           }
-        })
+        });
       }
-    })
+    });
     
   </script>
 

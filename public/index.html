@@ -9,13 +9,12 @@
   <!-- Firebase script -->
   <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
-
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue"></script>
-<!-- Vuelidate CDN -->
+  <!-- Vuelidate CDN -->
   <script src="https://cdn.jsdelivr.net/npm/vuelidate@0.6.2/lib/index.min.js"></script>
 
   <!-- Materialze Compiled and minified CSS -->
@@ -29,90 +28,51 @@
 </head>
 
 <body>
-
-  <div id="app">
-    <side-navbar></side-navbar>
-  </div>
-
   <header>
-
 
   </header>
 
-  <main >
-    <div class="container">
-      <input id="txtEmail" type="email" placeholder="Email">
-
-      <input id="txtPassword" type="password" placeholder="Password">
-
-      <button id="btnLogin" class="btn btn-action">
-        Log in
-      </button>
-
-      <button id="btnSignup" class="btn btn-secondary">
-        Sign Up
-      </button>
-
-      <button id="btnLogout" class="btn btn-action hide">
-        Log out
-      </button>
-      <div>
-        <p id="fbuser">Shee</p>
+  <main>
+    <div id="app">
+      <navbar></navbar>
+      <div class="container">
+        <div class="col-4">
+          <login></login>
+        </div>
+        <div class="col-8"></div>
       </div>
-    </div>
-    <!-- close container-->
-
-    <side
     </div>
   </main>
 
+  <footer>
 
-<!-- Vue Instances example Computed properties don't need parentheses. Only Methods-->
-  <div id="vue-app-one">
+  </footer>
 
- 
-<h2>{{ title }}</h2>
-<p>{{greet}}</p> 
- <greeting></greeting>
-  </div>
-
-  <div id="vue-app-two">
-    
-     <h2>{{title2}}</h2>
-    <p>{{greet}}</p>
-    <button v-on:click="changeTitle">Change App One Title</button>
-    <valid></valid>
-  </div>
-
-
-
-
- 
   <script src="./assets/js/app.js" type="text/javascript">
+    //   import { required, minLength, between } from 'vuelidate/lib/validators'
 
-  
-//   import { required, minLength, between } from 'vuelidate/lib/validators'
-
-// export default {
-//   data () {
-//     return {
-//       name: '',
-//       age: 0
-//     }
-//   },
-//   validations: {
-//     name: {
-//       required,
-//       minLength: minLength(4)
-//     },
-//     age: {
-//       between: between(20, 30)
-//     }
-//   }
-// }
-import { required, minLength, between } from 'vuelidate/lib/validators'
-  
-
+    // export default {
+    //   data () {
+    //     return {
+    //       name: '',
+    //       age: 0
+    //     }
+    //   },
+    //   validations: {
+    //     name: {
+    //       required,
+    //       minLength: minLength(4)
+    //     },
+    //     age: {
+    //       between: between(20, 30)
+    //     }
+    //   }
+    // }
+    import {
+      required,
+      minLength,
+      between
+    } from 'vuelidate/lib/validators'
   </script>
 
 </body>

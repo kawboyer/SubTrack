@@ -1,6 +1,55 @@
+// VUE COMPONENTS
 
+Vue.component('navbar', {
+  template: `
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">SubTracked</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Log In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-Vue.component('side-navbar', {
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+  </ul>
+  `
+});
+
+Vue.component('login', {
+  template: `
+  <div>
+    <input id="txtEmail" type="email" placeholder="Email">
+
+    <input id="txtPassword" type="password" placeholder="Password">
+
+    <button id="btnLogin" class="btn btn-action">
+      Log in
+    </button>
+
+    <button id="btnSignup" class="btn btn-secondary">
+      Sign Up
+    </button>
+
+    <button id="btnLogout" class="btn btn-action hide">
+      Log out
+    </button>
+    <div>
+      <p id="fbuser">Shee</p>
+    </div>
+    </div>
+`
+});
+
+Vue.component('sidebar', {
   template: `
   <ul id="slide-out" class="sidenav sidenav-fixed">
     <li><a href="#!">Add Subscription</a></li>
@@ -10,20 +59,25 @@ Vue.component('side-navbar', {
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
   <footer>&copy 2018</footer>
-  `,
+  `
 });
 
-// Vue.component('pie-chart', {
-//   var myPieChart = new Chart(ctx,{
-//     type: 'pie',
-//     data: data,
-//     options: options
-// });
-
+Vue.component('pie-chart', {
+  template: `
+    var myPieChart = new Chart(ctx,{
+    type: 'pie',
+    data: data,
+    options: options
+  });
+  `
+});
 
 new Vue({
   el: '#app'
 });
+
+
+// FIREBASE AUTH
 
 // Firebase User Authentication Protocol 
 var firebaseUser = null;
@@ -144,114 +198,83 @@ btnLogout.addEventListener("click", e => {
 //}
 
 
+// TEST WITH VUE
+// var one = new Vue({
+//   el: '#vue-app-one',
+//   data: {
+//     title: "Header Test"
+//   },
+//   methods: {
 
+//   },
+//   computed: {
 
-var one = new Vue({
-  el: '#vue-app-one',
-  data: {
-    title: "Header Test"
-  },
-  methods: {
+//     greet: function () {
+//       return "Hello from app one"
 
-  },
-  computed: {
+//     }
+//   }
 
-    greet: function () {
-      return "Hello from app one"
+// });
 
-    }
-  }
+// var two = new Vue({
+//   el: '#vue-app-two',
+//   data: {
+//     title: "Vue App Two",
+//     title2: "Vue App Two Title 2"
+//   },
+//   methods: {
+//     changeTitle: function () {
+//       one.title = "I have changed title one!"
+//     }
 
-});
+//   },
+//   computed: {
+//     greet: function () {
+//       return "Hello from app two, not app one!"
+//     }
+//   }
 
+// })
 
+// // //Change title of either instance from outside
 
+// // // two.title = "Changed from the outside!";
 
-var two = new Vue({
-  el: '#vue-app-two',
-  data: {
-    title: "Vue App Two",
-    title2: "Vue App Two Title 2"
-  },
-  methods: {
-    changeTitle: function () {
-      one.title = "I have changed title one!"
-    }
+// // //Generation of components
+// // //Component is a reusable part that we can use in any Vue instance we'd like
 
-  },
-  computed: {
-    greet: function () {
-      return "Hello from app two, not app one!"
-    }
-  }
+// // // Vue Component method takes two parameters: 1. The name(string) 2. an object
+// // // We can pass various properties
+// // // template is a rendering template of what shows up on dom
+// // // data, which is always a function, returns what we want to render
+// Vue.component('greeting', {
+//   template: '<p>Hey there, I am a component that can be used over and over. This cat is named {{name}}. <button v-on:click="changeName">ChangeCatName</button></p>',
+//   data: function () {
+//     return {
+//       name: "Pepper"
+//     }
+//   },
+//   methods: {
+//     changeName: function () {
+//       this.name = "Pamina"
+//     }
+//   }
+// });
 
-})
+// // // Can trick VUe to change internal components by assigning an external
+// // // global variable as an object that matches the one we want to change
+// // // and modifying it:
+// // // var data = {
+// // //   name: "Peanut"
+// // // }
 
+// // // Can then also pass through data into the component, just as we specified
+// // // data object inside Vue instance
+// new Vue({
+//   el: '#vue-app-one'
+// });
 
-
-
-// //Change title of either instance from outside
-
-// // two.title = "Changed from the outside!";
-
-// //Generation of components
-// //Component is a reusable part that we can use in any Vue instance we'd like
-
-// // Vue Component method takes two parameters: 1. The name(string) 2. an object
-// // We can pass various properties
-// // template is a rendering template of what shows up on dom
-// // data, which is always a function, returns what we want to render
-Vue.component('greeting', {
-  template: '<p>Hey there, I am a component that can be used over and over. This cat is named {{name}}. <button v-on:click="changeName">ChangeCatName</button></p>',
-  data: function () {
-    return {
-      name: "Pepper"
-    }
-  },
-  methods: {
-    changeName: function () {
-      this.name = "Pamina"
-    }
-  }
-});
-
-
-Vue.component('login', {
-  template:
-    `<div>
-
-  <input id="txtEmail" type="email" placeholder="Email">
-
-  <input id="txtPassword" type="password" placeholder="Password">
-
-  <button id="btnLogin" class="btn btn-action">
-    Log in
-  </button>
-
-  <button id="btnSignup" class="btn btn-secondary">
-    Sign Up
-  </button>
-
-  <button id="btnLogout" class="btn btn-action hide">
-      Log out
-  </button>
-
-</div>`
-});
-
-// // Can trick VUe to change internal components by assigning an external
-// // global variable as an object that matches the one we want to change
-// // and modifying it:
-// // var data = {
-// //   name: "Peanut"
-// // }
-
-// // Can then also pass through data into the component, just as we specified
-// // data object inside Vue instance
-new Vue({
-  el: '#vue-app-one'
-});
-
-new Vue({
-  el: '#vue-app-two'
-});
+// new Vue({
+//   el: '#vue-app-two'
+// });
